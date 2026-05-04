@@ -11,10 +11,8 @@ const getSystemTheme = () => {
   return 'light';
 };
 
-// Always use system theme - no localStorage persistence
 const getInitialTheme = () => {
-  if (typeof window === 'undefined') return 'light';
-  return getSystemTheme();
+  return 'dark';
 };
 
 export const ThemeProvider = ({ children }) => {

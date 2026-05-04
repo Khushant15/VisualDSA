@@ -6,7 +6,6 @@
 
 /* Import component styles */
 @import './navbar.css';
-@import './navbar-top.css';
 @import './pages.css';
 @import './Quiz.css';
 
@@ -39,6 +38,7 @@ html, body, #root, .app-container {
 
 body {
     overflow-y: scroll;
+    padding-top: 72px;
 }
 
 .app-container {

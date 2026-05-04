@@ -18,7 +18,6 @@ export const navigationLinks = [
   { to: "/data-structures", icon: FaCode, label: "Algorithms" },
   { to: "/learn", icon: FaGraduationCap, label: "Data Structures" },
   { to: "/about", icon: FaPerson, label: "About Us" },
-  { to: "/contributor-leaderboard", icon: FaCode, label: "Leaderboard" },
   { to: "/contact", icon: FaEnvelope, label: "Contact" },
 ];
 

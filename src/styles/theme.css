@@ -76,52 +76,52 @@
     --space-2xl: 3rem;
 }
 
-/* Dark Theme */
+/* Dark Theme - Deep Midnight Blue */
 [data-theme="dark"] {
-    /* Primary Colors - Dark Bluish */
-    --primary-bg: #0f172a;
-    --secondary-bg: rgba(30, 41, 59, 0.95);
+    /* Primary Colors - Midnight Blue */
+    --primary-bg: #020617;
+    --secondary-bg: #0f172a;
     --card-bg: #1e293b;
-    --surface-bg: #020617;
+    --surface-bg: #000000;
     
     /* Text Colors */
-    --text-primary: #e6edf3;
-    --text-secondary: rgba(230, 237, 243, 0.8);
-    --text-muted: rgba(230, 237, 243, 0.6);
-    --text-inverse: #0a0a1a;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    --text-inverse: #020617;
     
-    /* Accent Colors */
-    --accent-primary: #58a6ff;
-    --accent-hover: #79c0ff;
-    --accent-active: #4793e5;
-    --accent-light: rgba(88, 166, 255, 0.1);
+    /* Accent Colors - Electric Blue/Cyan */
+    --accent-primary: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --accent-active: #0ea5e9;
+    --accent-light: rgba(56, 189, 248, 0.1);
     
     /* Button Colors */
-    --button-primary-bg: #58a6ff;
-    --button-primary-text: #0a0a1a;
-    --button-primary-hover: #79c0ff;
-    --button-secondary-bg: rgba(88, 166, 255, 0.1);
-    --button-secondary-text: #58a6ff;
-    --button-secondary-hover: rgba(88, 166, 255, 0.2);
+    --button-primary-bg: #38bdf8;
+    --button-primary-text: #020617;
+    --button-primary-hover: #7dd3fc;
+    --button-secondary-bg: rgba(56, 189, 248, 0.1);
+    --button-secondary-text: #38bdf8;
+    --button-secondary-hover: rgba(56, 189, 248, 0.2);
     
     /* Border Colors */
-    --border-primary: rgba(240, 246, 252, 0.1);
-    --border-secondary: rgba(240, 246, 252, 0.05);
-    --border-accent: #58a6ff;
+    --border-primary: #1e293b;
+    --border-secondary: #334155;
+    --border-accent: #38bdf8;
     
     /* Sidebar Colors */
-    --sidebar-bg: linear-gradient(180deg, #1a1b23 0%, #16171d 100%);
-    --sidebar-border: rgba(240, 246, 252, 0.1);
-    --sidebar-text: #e6edf3;
-    --sidebar-text-secondary: rgba(230, 237, 243, 0.7);
-    --sidebar-hover: rgba(240, 246, 252, 0.05);
-    --sidebar-active: rgba(88, 166, 255, 0.15);
+    --sidebar-bg: #020617;
+    --sidebar-border: #1e293b;
+    --sidebar-text: #f8fafc;
+    --sidebar-text-secondary: #94a3b8;
+    --sidebar-hover: #0f172a;
+    --sidebar-active: rgba(56, 189, 248, 0.15);
     
     /* Shadows for dark theme */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.25);
-    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.35);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
 /* Light Theme (explicit for backward compatibility) */
