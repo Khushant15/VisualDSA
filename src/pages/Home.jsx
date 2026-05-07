@@ -16,6 +16,11 @@ import {
   Star,
   Share2,
   Trophy,
+  Layers,
+  Undo2,
+  Cpu,
+  Coins,
+  Layout,
 } from "lucide-react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -184,8 +189,43 @@ const Home = () => {
       icon: Share2,
       title: "Graph Algorithms",
       path: "/graph",
-      description: "BFS, DFS, Dijkstra on your own or sample graphs.",
+      description: "BFS, DFS, Dijkstra, A*, and more on custom graphs.",
       badges: ["Build graph", "Path trace", "Weights"],
+    },
+    {
+      icon: Layers,
+      title: "Dynamic Programming",
+      path: "/dp",
+      description: "Recursive subproblems visualized—LCS, Knapsack, and more.",
+      badges: ["Tabulation", "Memoization", "Optimizations"],
+    },
+    {
+      icon: Undo2,
+      title: "Backtracking",
+      path: "/backtracking",
+      description: "Exploration through trial and error—N-Queens, Sudoku, etc.",
+      badges: ["Search tree", "Pruning", "Solvers"],
+    },
+    {
+      icon: Coins,
+      title: "Greedy Algorithms",
+      path: "/greedy",
+      description: "Local optimal choices—Huffman coding, Fractional Knapsack.",
+      badges: ["Optimal", "Heuristics", "Fast"],
+    },
+    {
+      icon: Cpu,
+      title: "Bit Manipulation",
+      path: "/data-structures/bitmanipulation",
+      description: "The magic of bits—XOR tricks, shifting, and fast math.",
+      badges: ["Fast", "Low-level", "Masking"],
+    },
+    {
+      icon: Layout,
+      title: "Algorithm Comparison",
+      path: "/algorithm-comparison-table",
+      description: "Side-by-side complexity and performance analysis.",
+      badges: ["Benchmarks", "Tables", "Stats"],
     },
   ];
 
@@ -268,9 +308,9 @@ const Home = () => {
                 <span>Premium Algorithm Lab</span>
               </div>
 
-              <h1 className="hero-title">
+              <h2 className="hero-title">
                 Master Algorithms Through Visual Learning
-              </h1>
+              </h2>
 
               <p className="hero-subtitle">
                 Learn by seeing. Trace every step, compare complexity, and build intuition fast with our interactive visualization engine.
@@ -291,9 +331,20 @@ const Home = () => {
           <div className="features-list">
             {features.map((feature, index) => (
               <Link key={index} to={feature.path} className="feature-card">
-                <feature.icon size={32} />
-                <span className="feature-title">{feature.title}</span>
+                <div className="feature-card-header">
+                  <feature.icon size={28} />
+                  <div className="feature-badges">
+                    {feature.badges.map((badge, bIdx) => (
+                      <span key={bIdx} className="feature-badge">{badge}</span>
+                    ))}
+                  </div>
+                </div>
+                <h3 className="feature-title">{feature.title}</h3>
                 <p className="feature-desc">{feature.description}</p>
+                <div className="feature-footer">
+                  <span>Explore Now</span>
+                  <ArrowRight size={14} />
+                </div>
               </Link>
             ))}
           </div>

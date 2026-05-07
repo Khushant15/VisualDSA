@@ -161,7 +161,8 @@ const Navbar = () => {
   const navbarRef = useRef(null);
 
   const getIcon = (name) => ICON_COMPONENTS[name] || null;
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) =>
+    path && (location.pathname === path || location.pathname.startsWith(path + "/"));
 
   const toggleDesktopDropdown = (index) =>
     setDesktopDropdownOpen(desktopDropdownOpen === index ? null : index);

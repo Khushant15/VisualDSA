@@ -64,26 +64,46 @@ const Doubt = () => {
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isNameValid = validateName();
     const isEmailValid = validateEmail();
     const isDoubtValid = validateDoubt();
 
     if (isNameValid && isEmailValid && isDoubtValid) {
+      setSubmitStatus("loading");
+      
+      const formData = {
+        access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+        name: name,
+        email: email,
+        message: doubt,
+        subject: `Doubt from ${name}`,
+        from_name: "VisualDSA Doubt Section",
+      };
+
       try {
-        setSubmitStatus("loading");
-        const subject = encodeURIComponent(`Doubt from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nDoubt:\n${doubt}`);
-        window.location.href = `mailto:khushantsharma766@gmail.com?subject=${subject}&body=${body}`;
-        
-        setTimeout(() => {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
           setSubmitStatus("success");
           setName("");
           setEmail("");
           setDoubt("");
-        }, 800);
+        } else {
+          setSubmitStatus("error");
+        }
       } catch (error) {
+        console.error("Doubt submission error:", error);
         setSubmitStatus("error");
       }
     } else {
@@ -389,6 +409,7 @@ const Doubt = () => {
               type="button"
               className="cancel-btn"
               onClick={() => {
+                setName("");
                 setEmail("");
                 setDoubt("");
                 setEmailError("");

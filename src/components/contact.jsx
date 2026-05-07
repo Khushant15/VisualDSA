@@ -18,7 +18,7 @@ export default function Contact() {
         email: '',
         message: ''
     });
-    const [formStatus, setFormStatus] = useState({ submitted: false, error: false });
+    const [formStatus, setFormStatus] = useState({ submitted: false, error: false, loading: false });
 
     useEffect(() => {
         AOS.init({
@@ -40,25 +40,44 @@ export default function Contact() {
         e.preventDefault();
         
         if (!formData.name || !formData.email || !formData.message) {
-            setFormStatus({ submitted: false, error: true });
+            setFormStatus({ submitted: false, error: true, loading: false });
             return;
         }
 
-        try {
-            const subject = encodeURIComponent(`Contact from ${formData.name}`);
-            const body = encodeURIComponent(
-              `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-            );
-            window.location.href = `mailto:khushantsharma766@gmail.com?subject=${subject}&body=${body}`;
+        setFormStatus({ submitted: false, error: false, loading: true });
 
-            setFormStatus({ submitted: true, error: false });
-            
-            setTimeout(() => {
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    subject: `Contact from ${formData.name}`,
+                    from_name: "VisualDSA Contact Form",
+                }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setFormStatus({ submitted: true, error: false, loading: false });
                 setFormData({ name: '', email: '', message: '' });
-                setFormStatus({ submitted: false, error: false });
-            }, 3000);
+                
+                setTimeout(() => {
+                    setFormStatus({ submitted: false, error: false, loading: false });
+                }, 5000);
+            } else {
+                setFormStatus({ submitted: false, error: true, loading: false });
+            }
         } catch (error) {
-            setFormStatus({ submitted: false, error: true });
+            console.error("Form submission error:", error);
+            setFormStatus({ submitted: false, error: true, loading: false });
         }
     };
 
@@ -123,10 +142,15 @@ export default function Contact() {
                         <div className="submit-container">
                             <button 
                                 type="submit" 
-                                className={`submit-btn ${formStatus.submitted ? 'success' : ''}`}
-                                disabled={formStatus.submitted}
+                                className={`submit-btn ${formStatus.submitted ? 'success' : ''} ${formStatus.loading ? 'loading' : ''}`}
+                                disabled={formStatus.submitted || formStatus.loading}
                             >
-                                {formStatus.submitted ? (
+                                {formStatus.loading ? (
+                                    <>
+                                        <div className="btn-spinner"></div>
+                                        <span>Sending...</span>
+                                    </>
+                                ) : formStatus.submitted ? (
                                     <>
                                         <FaCheckCircle />
                                         <span>Message Sent!</span>
@@ -200,7 +224,7 @@ export default function Contact() {
                         </a>
                         
                         <a 
-                            href="mailto:contact@visualdsa.com" 
+                            href="mailto:khushantsharma766@gmail.com" 
                             className="social-card email"
                         >
                             <div className="social-icon">
@@ -208,7 +232,7 @@ export default function Contact() {
                             </div>
                             <div className="social-info">
                                 <h3>Email</h3>
-                                <span>Direct contact</span>
+                                <span>khushantsharma766@gmail.com</span>
                             </div>
                         </a>
                     </div>
