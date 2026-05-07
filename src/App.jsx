@@ -9,7 +9,6 @@ import { SettingsProvider } from "./contexts/SettingsContext";
 import { MobileMenuProvider } from "./contexts/MobileMenuContext";
 import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 import { NotificationsProvider } from "./contexts/NotificationsContext";
-// import { GoogleAuthProvider } from "./contexts/FirebaseAuthContext";
 import { ThemeProvider } from "./ThemeContext";
 
 // Components
